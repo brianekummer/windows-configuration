@@ -1,0 +1,11 @@
+#write {
+	max-width: 2000px;
+	margin-left: 75px;
+	margin-right: 75px;
+}
+
+#write pre.md-meta-block {
+	max-width: 2000px;
+	margin-left: 75px;
+	margin-right: 75px;
+}

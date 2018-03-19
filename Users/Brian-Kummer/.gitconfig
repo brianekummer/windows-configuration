@@ -1,0 +1,31 @@
+[includeIf "gitdir/i:c:/dev/"]
+    path = .gitconfig-teletracking
+	
+[includeIf "gitdir/i:c:/users/brian-kummer/personal/code/"]
+    path = .gitconfig-personal
+		
+[mergetool]
+  prompt = false
+  keepBackup = false
+  keepTemporaries = false
+
+[merge]
+  tool = winmerge
+
+[mergetool "winmerge"]
+  name = WinMerge
+  trustExitCode = true
+  cmd = "'C:/Program Files (x86)/WinMerge/WinMergeU.exe" -u -e -dl "Local" -dr "Remote" $LOCAL $REMOTE $MERGED
+  
+[diff]
+  tool = winmerge
+
+[difftool "winmerge"]
+  name = WinMerge
+  trustExitCode = true
+  cmd = "'C:/Program Files (x86)/WinMerge/WinMergeU.exe'" -e "$LOCAL" "$REMOTE"
+
+[gui]
+	recentrepo = C:/dev/git/cloud-platform
+[credential]
+	helper = wincred
