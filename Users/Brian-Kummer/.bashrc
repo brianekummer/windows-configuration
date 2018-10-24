@@ -1,5 +1,7 @@
 # Brian Kummer
 
+alias git-backup-config="/c/Users/Brian-Kummer/bin/personal/git-backup-config.sh"
+
 # Because I'm always trying to clear the screen with cls, like I can in CMD
 alias cls=clear
 
@@ -22,22 +24,26 @@ alias git-export="git ls-files --modified --others --exclude-standard | xargs zi
 # Ping all local cloud services, telling chrome to allow insecure content. I
 # had issues calling this directly from bash, so I created a batch file to do 
 # the dirty work.
-alias ping-local-services="/c/Users/Brian-Kummer/bin/ping-local-services.bat"
+alias ping-local-services="/c/Users/Brian-Kummer/bin/tele/ping-local-services.bat"
 
-# Stop and start heartbeat and report generator services
-alias start-heartbeat="/c/Users/Brian-Kummer/bin/start-heartbeat.bat"
-alias stop-heartbeat="/c/Users/Brian-Kummer/bin/stop-heartbeat.bat"
-alias start-hb="/c/Users/Brian-Kummer/bin/start-heartbeat.bat"
-alias stop-hb="/c/Users/Brian-Kummer/bin/stop-heartbeat.bat"
+# Stop and start heartbeat services
+alias start-heartbeat="/c/Users/Brian-Kummer/bin/tele/start-heartbeat.bat"
+alias stop-heartbeat="/c/Users/Brian-Kummer/bin/tele/stop-heartbeat.bat"
+alias start-hb="/c/Users/Brian-Kummer/bin/tele/start-heartbeat.bat"
+alias stop-hb="/c/Users/Brian-Kummer/bin/tele/stop-heartbeat.bat"
 
 # Be able to run grunt build from any folder
-alias grunt-build="/c/Users/Brian-Kummer/bin/grunt-build.bat"
-
-# git-skip to skip tracking some files
-# git-skip-list to see what files are being skipped
-alias git-skip="/c/Users/Brian-Kummer/bin/git-skip.sh"
-alias git-skip-list="/c/Users/Brian-Kummer/bin/git-skip-list.sh"
+alias grunt-build="/c/Users/Brian-Kummer/bin/tele/grunt-build.bat"
 
 # Recycle Rabbit service when my local services hang
-#alias rabbit-recycle="/c/Users/Brian-Kummer/bin/rabbit-recycle.bat"
-alias recycle-rabbit="/c/Users/Brian-Kummer/bin/recycle-rabbit.bat"
+alias rabbit-recycle="NET STOP RabbitMQ; NET START RabbitMQ"
+alias recycle-rabbit="NET STOP RabbitMQ; NET START RabbitMQ"
+
+# Kill ChromeDriver, Chrome, and Visual Studio for automation testing
+alias kill-chromedriver="taskkill //F //IM chromedriver.exe"
+alias kill-chrome="taskkill //F //IM chrome.exe"
+alias kill-vs="taskkill //F //IM devenv.exe"
+
+# Local/fake ADFS
+alias local-adfs-on="/c/Users/Brian-Kummer/bin/tele/local-adfs-on.bat"
+alias local-adfs-off="/c/Users/Brian-Kummer/bin/tele/local-adfs-off.bat"
