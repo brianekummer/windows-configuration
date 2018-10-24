@@ -5,12 +5,16 @@
 # MyWindowsConfigRepo        = /c/users/brian-kummer/personal/code/git/windows-configuration
 # MyTeleOneDriveBackupFolder = /c/users/brian-kummer/OneDrive - TeleTracking Technologies, Inc/Configuration Backups
 
-#---------------------------------------------------------------------
-#- Backup any config files for personal stuff to my GitHub account
-#---------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
+#- Backup sensitive personal config files to my C:\Users\Brian-Kummer\Personal folder
+#----------------------------------------------------------------------------------------
 rm "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg"
 reg export "HKCU\Software\SimonTatham\PuTTY" "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg"
 
+
+#----------------------------------------------------------------------------------------
+#- Backup personal config files to my GitHub account
+#----------------------------------------------------------------------------------------
 cp "/C/Program Files/ConEmu/ConEmu/ConEmu.xml" "/C/Users/Brian-Kummer/Personal/Code/git/windows-configuration/Program Files/ConEmu/ConEmu/"
 cp "/C/Program Files/Git/etc/profile.d/git-prompt.sh" "/c/users/brian-kummer/personal/code/git/windows-configuration/Program Files/Git/etc/profile.d/"
 cp "/C/Users/Brian-Kummer/.bashrc" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
@@ -29,9 +33,9 @@ if git commit -m "Backup $DA" ; then
 fi
 
 
-#-------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
 # Backup TeleTracking-specific config files to OneDrive to be synced
-#-------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
 cp "/c/Users/Brian-Kummer/bin/tele/*" "/c/users/brian-kummer/OneDrive - TeleTracking Technologies, Inc/Configuration Backups/Users/Brian-Kummer/bin/tele"
 cp "/c/dev/git/cloud-automation/TeleTracking.Access.Automation/App.config" "/C/Users/Brian-Kummer\OneDrive - TeleTracking Technologies, Inc/Configuration Backups/dev/git/cloud-automation/TeleTracking.Access.Automation/App.config"
 cp "/C/dev/git/cloud-automation/TeleTracking.Core.Automation/KeywordFramework/Environments-Platform.xml" "/C/Users/Brian-Kummer/OneDrive - TeleTracking Technologies, Inc/Configuration Backups/dev/git/cloud-automation/TeleTracking.Core.Automation/KeywordFramework/Environments-Platform.xml"
