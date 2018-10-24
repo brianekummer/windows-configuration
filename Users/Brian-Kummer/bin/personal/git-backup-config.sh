@@ -8,7 +8,7 @@
 #---------------------------------------------------------------------
 #- Backup any config files for personal stuff to my GitHub account
 #---------------------------------------------------------------------
-reg export "HKCU\Software\SimonTatham\PuTTY" "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg"
+reg export "HKCU\Software\SimonTatham\PuTTY" "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg" /y
 cp "/C/Program Files/ConEmu/ConEmu/ConEmu.xml" "/C/Users/Brian-Kummer/Personal/Code/git/windows-configuration/Program Files/ConEmu/ConEmu/"
 cp "/C/Program Files/Git/etc/profile.d/git-prompt.sh" "/c/users/brian-kummer/personal/code/git/windows-configuration/Program Files/Git/etc/profile.d/"
 cp "/C/Users/Brian-Kummer/.bashrc" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
