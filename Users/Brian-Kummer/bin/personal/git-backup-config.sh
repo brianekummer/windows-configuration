@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # TO DO - Define vars to clean this up
-# MyUserFolder               = /C/Users/Brian-Kummer = 
+# MyUserFolder               = /C/Users/Brian-Kummer
 # MyWindowsConfigRepo        = /c/users/brian-kummer/personal/code/git/windows-configuration
 # MyTeleOneDriveBackupFolder = /c/users/brian-kummer/OneDrive - TeleTracking Technologies, Inc/Configuration Backups
 
 #----------------------------------------------------------------------------------------
-#- Backup sensitive personal config files to my C:\Users\Brian-Kummer\Personal folder
+#- Backup sensitive personal config files to my C:\Users\Brian-Kummer\Personal\Configurations folder
 #----------------------------------------------------------------------------------------
 rm "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg"
-reg export "HKCU\Software\SimonTatham\PuTTY" "C:\Users\Brian-Kummer\Personal\PortableApps\putty\putty.reg"
-
+reg export "HKCU\Software\SimonTatham\PuTTY" "C:\Users\Brian-Kummer\Personal\Configurations\putty.reg"
+cp "/C/Users/Brian-Kummer/AppData/Local/Nextcloud/nextcloud.cfg" "/C/Users/Brian-Kummer/Personal/Configurations"
 
 #----------------------------------------------------------------------------------------
 #- Backup personal config files to my GitHub account
@@ -22,7 +22,7 @@ cp "/c/Users/Brian-Kummer/.gitconfig" "/c/users/brian-kummer/personal/code/git/w
 cp "/c/Users/Brian-Kummer/.gitconfig-personal" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
 cp "/c/Users/Brian-Kummer/.gitconfig-teletracking" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
 cp "/c/Users/Brian-Kummer/bin/personal/"* "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/bin/personal/"
-cp "/c/Users/Brian-Kummer/AppData/Roaming/Typora/themes\pixyll.user.css" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/AppData/Roaming/Typora/themes/"
+cp "/c/Users/Brian-Kummer/AppData/Roaming/Typora/themes\*.user.css" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/AppData/Roaming/Typora/themes/"
 
 # Commit any changes, and if there are any, then push to GitHub
 cd /c/users/brian-kummer/personal/code/git/windows-configuration

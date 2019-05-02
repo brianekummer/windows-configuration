@@ -24,12 +24,11 @@ set_title_and_prompt() {
 	COLOR_CYAN="\[\e[0;36m\]"
 	COLOR_WHITE="\[\e[0;37m\]"
 
-	branch="$(git rev-parse --abbrev-ref HEAD)"
+	branch="$(git rev-parse --abbrev-ref HEAD 2>&1 | grep -v 'not a git repository')"
 	
  	title="Git Bash - $PWD"
 	cmd_prompt="$COLOR_YELLOW$PWD"
 	if [ "$branch" ]; then
-	  # Add branch name to window title and command prompt
   	title="$title - $branch"
 		cmd_prompt="$cmd_prompt $COLOR_CYAN($branch)"
 	fi

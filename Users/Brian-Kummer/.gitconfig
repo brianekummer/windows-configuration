@@ -15,7 +15,7 @@
 [mergetool "winmerge"]
   name = WinMerge
   trustExitCode = true
-  cmd = "'C:/Program Files (x86)/WinMerge/WinMergeU.exe" -u -e -dl "Local" -dr "Remote" $LOCAL $REMOTE $MERGED
+  cmd = "'C:/Program Files/WinMerge/WinMergeU.exe" -u -e -dl "Local" -dr "Remote" $LOCAL $REMOTE $MERGED
   
 [diff]
   tool = winmerge
@@ -23,7 +23,7 @@
 [difftool "winmerge"]
   name = WinMerge
   trustExitCode = true
-  cmd = "'C:/Program Files (x86)/WinMerge/WinMergeU.exe'" -e "$LOCAL" "$REMOTE"
+  cmd = "'C:/Program Files/WinMerge/WinMergeU.exe'" -e "$LOCAL" "$REMOTE"
 
 [gui]
 	recentrepo = C:/dev/git/cloud-platform
