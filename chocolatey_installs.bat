@@ -13,7 +13,6 @@ REM ***** Install Chocolatey *****
 
 REM ***** TeleTracking *****
 choco install chocolateygui -y
-choco install visualstudio2017enterprise -y
 choco install microsoft-office-deployment -y --params="'/64bit'"
 choco install git -y
 choco install git-credential-manager-for-windows -y
@@ -26,11 +25,16 @@ choco install googlechrome -y
 choco install linqpad -y
 choco install postman -y
 choco install slack -y
-choco install sql-server-management-studio -y
-choco install sql-server-2017 -y
 choco install sysinternals -y
 choco install paint.net -y
 choco install treesizefree -y
+
+REM ***** IQ Platform. Developer script may do bucnh of this *****
+REM choco install visualstudio2017enterprise -y
+REM choco install visualstudio2017buildtools -y
+choco install sql-server-management-studio -y
+choco install sql-server-2017 -y
+choco install nant -y
 
 REM ***** VS Code and some extensions *****
 choco install vscode -y
@@ -86,3 +90,5 @@ REM Zeta Resource Editor
 
 REM ***** Trying to Avoid This *****
 REM choco install notepadplusplus.install -y
+
+REM ***** UNSURE ABOUT THESE *****
