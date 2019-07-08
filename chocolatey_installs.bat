@@ -29,7 +29,7 @@ choco install sysinternals -y
 choco install paint.net -y
 choco install treesizefree -y
 
-REM ***** IQ Platform. Developer script may do bucnh of this *****
+REM ***** IQ Platform. Developer script may do several of these *****
 REM choco install visualstudio2017enterprise -y
 REM choco install visualstudio2017buildtools -y
 choco install sql-server-management-studio -y
@@ -44,7 +44,6 @@ choco install vscode -y
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension dotjoshjohnson.xml
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension ms-mssql.mssql
 REM ***** EVALUATING THESE EXTENSIONS
-REM esbenp.prettier-vscode OR hookyqr.beautify
 REM coenraads.bracket-pair-colorizer OR 2gua.rainbow-brackets
 REM shan.code-settings-sync
 REM gruntfuggly.todo-tree
@@ -53,7 +52,6 @@ REM foxundermoon.shell-format OR shakram02.bash-beautify
 REM mikestead.dotenv
 REM ryu1kn.text-marker
 REM formulahendry.auto-close-tag
-REM One Dark Pro: zhuangtongfa.material-theme 
 
 REM ***** Cloud tools *****
 choco install terraform --version 0.11.7 -y
@@ -66,7 +64,7 @@ choco install eclipse -y
 choco install maven -y
 choco install mongodb -y
 choco install openssl.light -y
-choco install make
+choco install make -y
 
 REM ***** Personal *****
 choco install conemu -y
@@ -85,10 +83,53 @@ choco install sdformatter -y
 choco install win32diskimager -y
 choco install partitionwizard -y
 
-REM ***** Personal- Doesn't Exist *****
+REM ***** These Apps Don't Yet Have Chocolatey Packages *****
 REM Zeta Resource Editor
 
-REM ***** Trying to Avoid This *****
+REM ***** I'm Trying to Avoid This *****
 REM choco install notepadplusplus.install -y
 
-REM ***** UNSURE ABOUT THESE *****
+
+REM ***** Add Chrome Extensions *****
+reg add "HKLM\Software\Wow6432Node\Google"
+reg add "HKLM\Software\Wow6432Node\Google\Chrome"
+reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions"
+CALL :AddChromeExtension "ffmdedmghpoipeldijkdlcckdpempkdi", "Bookmarks Menu"
+CALL :AddChromeExtension "jlhmfgmfgeifomenelglieieghnjghma", "Cisco Webex Extension"
+CALL :AddChromeExtension "eimadpbcbfnmbkopoojfekhnkhdbieeh", "Dark Reader"
+CALL :AddChromeExtension "bfogiafebfohielmmehodmfbbebbbpei", "Keeper Password Manager..."
+CALL :AddChromeExtension "cjpalhdlnbpafiamejdnhcphjbkeiagm", "uBlock Origin"
+CALL :AddChromeExtension "nenlahapcbofgnanklpelkaejcehkggg", "Wikibuy from Capital One"
+CALL :AddChromeExtension "cppjkneekbjaeellbfkmgnhonkkjfpdn", "Clear Cache"
+CALL :AddChromeExtension "kkelicaakdanhinjdeammmilcgefonfh", "Window Resizer"
+
+
+REM ***** Add Windows Store Apps *****
+REM These installs cannot be automated
+CALL :OpenWindowsStore "9WZDNCRFJ223", "iHeartRadio"
+@PAUSE
+CALL :OpenWindowsStore "9WZDNCRDFS44", "White Noise"
+@PAUSE
+CALL :OpenWindowsStore "9WZDNCRDRK77", "gTasks HD Pro"
+@PAUSE
+CALL :OpenWindowsStore "9NBLGGH5KRJX", "JOIN by joaoapps"
+@PAUSE
+
+
+REM ***** All Done *****
+EXIT /b 0
+
+
+REM ***** Install a Chrome Extension *****
+REM   - Parameter #2 isn't used, is for documentation purposes
+REM   - Sometimes this doesn't work
+:AddChromeExtension
+reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions\%~1" /v update_url /d "https://clients2.google.com/service/update2/crx" /f
+EXIT /b 0
+
+
+REM ***** Open the Windows Store to a Specific App *****
+REM   - Parameter #2 isn't used, is for documentation purposes
+:OpenWindowsStore
+START "" ms-windows-store://pdp/?ProductId=%~1
+EXIT /b 0
