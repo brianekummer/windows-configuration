@@ -19,7 +19,6 @@ choco install git-credential-manager-for-windows -y
 choco install 7zip.install -y
 choco install agentransack -y
 choco install winmerge -y
-choco install robo3t.install -y
 choco install firefox -y
 choco install googlechrome -y
 choco install linqpad -y
@@ -60,11 +59,13 @@ choco install awscli -y
 
 REM ***** Microservices *****
 choco install docker-desktop -y
+choco install jdk8 -y -params "source=false"
 choco install eclipse -y
 choco install maven -y
-choco install mongodb -y
 choco install openssl.light -y
 choco install make -y
+choco install mongodb -y
+choco install robo3t.install -y
 
 REM ***** Personal *****
 choco install conemu -y
@@ -91,6 +92,11 @@ REM choco install notepadplusplus.install -y
 
 
 REM ***** Add Chrome Extensions *****
+REM Note: If user uninstalls an extension added through the registrym the extension
+REM       will be blacklisted, and automated installs will fail to re-add it. "However,
+REM       if you (the developer) accidentally uninstalled your extension through the 
+REM       UI, you can remove the blocklist tag by installing the extension normally
+REM       through the UI, and then uninstalling it."
 reg add "HKLM\Software\Wow6432Node\Google"
 reg add "HKLM\Software\Wow6432Node\Google\Chrome"
 reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions"
@@ -122,7 +128,6 @@ EXIT /b 0
 
 REM ***** Install a Chrome Extension *****
 REM   - Parameter #2 isn't used, is for documentation purposes
-REM   - Sometimes this doesn't work
 :AddChromeExtension
 reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions\%~1" /v update_url /d "https://clients2.google.com/service/update2/crx" /f
 EXIT /b 0
