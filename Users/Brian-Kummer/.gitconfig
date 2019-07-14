@@ -27,5 +27,6 @@
 
 [gui]
 	recentrepo = C:/dev/git/cloud-platform
+	
 [credential]
 	helper = wincred

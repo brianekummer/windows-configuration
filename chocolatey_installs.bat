@@ -1,17 +1,17 @@
-REM *********************************************************
-REM *  This batch file installs Chocolatey and most of the 
-REM *  software I use on a weekly basis
+REM **************************************************************************
+REM *  This batch file installs Chocolatey and most of the software I 
+REM *  routinely use
 REM *
 REM *  This *MUST* be run as an administrator
 REM *
-REM *  Sometimes I've seen some of these packages fail, and
-REM *  rerunning that install works
-REM *********************************************************
+REM *  Sometimes I've seen some of these packages fail, and rerunning that 
+REM *  install works
+REM **************************************************************************
 
 REM ***** Install Chocolatey *****
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
-REM ***** TeleTracking *****
+REM ***** TeleTracking Software *****
 choco install chocolateygui -y
 choco install microsoft-office-deployment -y --params="'/64bit'"
 choco install git -y
@@ -27,22 +27,25 @@ choco install slack -y
 choco install sysinternals -y
 choco install paint.net -y
 choco install treesizefree -y
+choco install citrix-workspace -y
 
-REM ***** IQ Platform. Developer script may do several of these *****
+REM ***** IQ Platform *****
+REM Our developer script may install several of these
 REM choco install visualstudio2017enterprise -y
 REM choco install visualstudio2017buildtools -y
 choco install sql-server-management-studio -y
 choco install sql-server-2017 -y
 choco install nant -y
 
-REM ***** VS Code and some extensions *****
+REM ***** VS Code and Extensions *****
 choco install vscode -y
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension slevesque.vscode-autohotkey
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension mauve.terraform
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension sunjw.jstool 
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension dotjoshjohnson.xml
 "C:\Program Files\Microsoft VS Code\code.exe" --install-extension ms-mssql.mssql
-REM ***** EVALUATING THESE EXTENSIONS
+"C:\Program Files\Microsoft VS Code\code.exe" --install-extension ms-azuretools.vscode-docker
+REM ***** STILL EVALUATING THESE EXTENSIONS
 REM coenraads.bracket-pair-colorizer OR 2gua.rainbow-brackets
 REM shan.code-settings-sync
 REM gruntfuggly.todo-tree
@@ -52,23 +55,33 @@ REM mikestead.dotenv
 REM ryu1kn.text-marker
 REM formulahendry.auto-close-tag
 
-REM ***** Cloud tools *****
+REM ***** Cloud Tools *****
 choco install terraform --version 0.11.7 -y
 choco install azure-cli -y
 choco install awscli -y
 
 REM ***** Microservices *****
+REM There are comments in #pittsburgh-accessteam Slack channel on 7/9/2019 if have problems w/Java
+choco install curl -y
 choco install docker-desktop -y
-choco install jdk8 -y -params "source=false"
-choco install eclipse -y
+choco install adoptopenjdk8 --version 8.212 -y
+choco install intellijidea-community -y
+choco install conemu -y
 choco install maven -y
 choco install openssl.light -y
 choco install make -y
 choco install mongodb -y
-choco install robo3t.install -y
+
+
+
+REM ***** Old Stuff *****
+REM choco install eclipse -y
+REM choco install robo3t.install -y
+
+REM ***** I use ConEmu instead of Cmder because Cmder doesn't let me change the window title, which I use for AHK. And Cmder uses ConEmu, so not big loss to me.
+
 
 REM ***** Personal *****
-choco install conemu -y
 choco install typora -y
 choco install autohotkey -y
 choco install nextcloud-client -y
@@ -84,34 +97,47 @@ choco install sdformatter -y
 choco install win32diskimager -y
 choco install partitionwizard -y
 
-REM ***** These Apps Don't Yet Have Chocolatey Packages *****
-REM Zeta Resource Editor
 
 REM ***** I'm Trying to Avoid This *****
 REM choco install notepadplusplus.install -y
 
 
-REM ***** Add Chrome Extensions *****
-REM Note: If user uninstalls an extension added through the registrym the extension
-REM       will be blacklisted, and automated installs will fail to re-add it. "However,
-REM       if you (the developer) accidentally uninstalled your extension through the 
-REM       UI, you can remove the blocklist tag by installing the extension normally
-REM       through the UI, and then uninstalling it."
-reg add "HKLM\Software\Wow6432Node\Google"
-reg add "HKLM\Software\Wow6432Node\Google\Chrome"
-reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions"
-CALL :AddChromeExtension "ffmdedmghpoipeldijkdlcckdpempkdi", "Bookmarks Menu"
-CALL :AddChromeExtension "jlhmfgmfgeifomenelglieieghnjghma", "Cisco Webex Extension"
-CALL :AddChromeExtension "eimadpbcbfnmbkopoojfekhnkhdbieeh", "Dark Reader"
-CALL :AddChromeExtension "bfogiafebfohielmmehodmfbbebbbpei", "Keeper Password Manager..."
-CALL :AddChromeExtension "cjpalhdlnbpafiamejdnhcphjbkeiagm", "uBlock Origin"
-CALL :AddChromeExtension "nenlahapcbofgnanklpelkaejcehkggg", "Wikibuy from Capital One"
-CALL :AddChromeExtension "cppjkneekbjaeellbfkmgnhonkkjfpdn", "Clear Cache"
-CALL :AddChromeExtension "kkelicaakdanhinjdeammmilcgefonfh", "Window Resizer"
 
 
-REM ***** Add Windows Store Apps *****
-REM These installs cannot be automated
+REM **************************************************************************
+REM *  Manually Installed Items
+REM *
+REM *  These have no automated process available. Each of these should be
+REM *  followed by a @PAUSE.
+REM **************************************************************************
+
+REM ***** Applications *****
+START chrome.exe "https://www.zeta-resource-editor.com/index.html"
+@PAUSE
+START chrome.exe "https://www.nec-display.com/dl/en/soft/multipresenter/select_country_win_e.html"
+@PAUSE
+START chrome.exe "https://www.mongodb.com/download-center/compass" @REM Download Community Edition
+@PAUSE
+
+REM ***** Chrome Extensions *****
+CALL :AddChromeExtension "ffmdedmghpoipeldijkdlcckdpempkdi", "bookmarks-menu"
+@PAUSE
+CALL :AddChromeExtension "jlhmfgmfgeifomenelglieieghnjghma", "cisco-webex-extension"
+@PAUSE
+CALL :AddChromeExtension "eimadpbcbfnmbkopoojfekhnkhdbieeh", "dark-reader"
+@PAUSE
+CALL :AddChromeExtension "bfogiafebfohielmmehodmfbbebbbpei", "keeper-password-manager"
+@PAUSE
+CALL :AddChromeExtension "cjpalhdlnbpafiamejdnhcphjbkeiagm", "ublock-origin"
+@PAUSE
+CALL :AddChromeExtension "nenlahapcbofgnanklpelkaejcehkggg", "wikibuy-from-capital-one"
+@PAUSE
+CALL :AddChromeExtension "cppjkneekbjaeellbfkmgnhonkkjfpdn", "clear-cache"
+@PAUSE
+CALL :AddChromeExtension "kkelicaakdanhinjdeammmilcgefonfh", "window-resizer"
+@PAUSE
+
+REM ***** Windows Store Apps *****
 CALL :OpenWindowsStore "9WZDNCRFJ223", "iHeartRadio"
 @PAUSE
 CALL :OpenWindowsStore "9WZDNCRDFS44", "White Noise"
@@ -122,19 +148,42 @@ CALL :OpenWindowsStore "9NBLGGH5KRJX", "JOIN by joaoapps"
 @PAUSE
 
 
-REM ***** All Done *****
+
+REM **************************************************************************
+REM *  All done
+REM **************************************************************************
 EXIT /b 0
 
 
-REM ***** Install a Chrome Extension *****
-REM   - Parameter #2 isn't used, is for documentation purposes
+
+REM **************************************************************************
+REM *  Install a Chrome Extension
+REM *
+REM *  If a user uninstalls an extension added through the registry, the 
+REM *  extension will be blacklisted, and automated installs will fail to
+REM *  re-add it. "However, if you (the developer) accidentally uninstalled 
+REM *  your extension through the UI, you can remove the blocklist tag by
+REM *  installing the extension normally through the UI, and then uninstalling
+REM *  it."
+REM **************************************************************************
 :AddChromeExtension
-reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions\%~1" /v update_url /d "https://clients2.google.com/service/update2/crx" /f
+REM Code to add extension using the registry:
+REM    reg add "HKLM\Software\Wow6432Node\Google"
+REM    reg add "HKLM\Software\Wow6432Node\Google\Chrome"
+REM    reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions"
+REM    reg add "HKLM\Software\Wow6432Node\Google\Chrome\Extensions\%~1" /v update_url /d "https://clients2.google.com/service/update2/crx" /f
+REM 
+REM Code to add extension by opening Chrome to the store page for the add in
+REM so I can manually add the extension:
+START chrome.exe "https://chrome.google.com/webstore/detail/%~1/%~2?hl=en"
 EXIT /b 0
 
 
-REM ***** Open the Windows Store to a Specific App *****
-REM   - Parameter #2 isn't used, is for documentation purposes
+REM **************************************************************************
+REM *  Open the Windows Store to a Specific App
+REM *
+REM *  Parameter #2 isn't used, and is only for documentation purposes
+REM **************************************************************************
 :OpenWindowsStore
 START "" ms-windows-store://pdp/?ProductId=%~1
 EXIT /b 0
