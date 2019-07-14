@@ -15,9 +15,10 @@ cp "/C/Users/Brian-Kummer/AppData/Local/Nextcloud/nextcloud.cfg" "/C/Users/Brian
 #----------------------------------------------------------------------------------------
 #- Backup personal config files to my GitHub account
 #----------------------------------------------------------------------------------------
-cp "/C/Program Files/ConEmu/ConEmu/ConEmu.xml" "/C/Users/Brian-Kummer/Personal/Code/git/windows-configuration/Program Files/ConEmu/ConEmu/"
-cp "/C/Program Files/Git/etc/profile.d/git-prompt.sh" "/c/users/brian-kummer/personal/code/git/windows-configuration/Program Files/Git/etc/profile.d/"
-cp "/C/Users/Brian-Kummer/.bashrc" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
+#cp "/c/Program Files/ConEmu/ConEmu/ConEmu.xml" "/C/Users/Brian-Kummer/Personal/Code/git/windows-configuration/Program Files/ConEmu/ConEmu/"
+cp "/c/Program Files/Git/etc/profile.d/git-prompt.sh" "/c/users/brian-kummer/personal/code/git/windows-configuration/Program Files/Git/etc/profile.d/"
+cp "/c/Users/Brian-Kummer/.bash_profile" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
+cp "/c/Users/Brian-Kummer/.bashrc" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
 cp "/c/Users/Brian-Kummer/.gitconfig" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
 cp "/c/Users/Brian-Kummer/.gitconfig-personal" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
 cp "/c/Users/Brian-Kummer/.gitconfig-teletracking" "/c/users/brian-kummer/personal/code/git/windows-configuration/Users/Brian-Kummer/"
