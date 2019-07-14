@@ -10,7 +10,7 @@
   keepTemporaries = false
 
 [merge]
-  tool = winmerge
+	tool = meld
 
 [mergetool "winmerge"]
   name = WinMerge
@@ -18,7 +18,7 @@
   cmd = "'C:/Program Files/WinMerge/WinMergeU.exe" -u -e -dl "Local" -dr "Remote" $LOCAL $REMOTE $MERGED
   
 [diff]
-  tool = winmerge
+	tool = winmerge
 
 [difftool "winmerge"]
   name = WinMerge
@@ -27,6 +27,9 @@
 
 [gui]
 	recentrepo = C:/dev/git/cloud-platform
-	
 [credential]
 	helper = wincred
+[mergetool "meld"]
+	path = C:/Program Files (x86)/Meld/meld.exe
+[difftool "meld"]
+	path = C:/Program Files (x86)/Meld/Meld.exe
