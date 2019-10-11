@@ -62,23 +62,21 @@ choco install awscli -y
 
 REM ***** Microservices *****
 REM There are comments in #pittsburgh-accessteam Slack channel on 7/9/2019 if have problems w/Java
+REM I use ConEmu instead of Cmder because Cmder doesn't let me change the window title, which I use for AHK. And Cmder uses ConEmu, so not big loss to me.
 choco install curl -y
 choco install docker-desktop -y
-choco install adoptopenjdk8 --version 8.212 -y
+choco install openjdk -y
 choco install intellijidea-community -y
-choco install conemu -y
 choco install maven -y
 choco install openssl.light -y
 choco install make -y
-choco install mongodb -y
-
+choco install conemu -y
+choco install python -y
+choco install robo3t.install -y
 
 
 REM ***** Old Stuff *****
 REM choco install eclipse -y
-REM choco install robo3t.install -y
-
-REM ***** I use ConEmu instead of Cmder because Cmder doesn't let me change the window title, which I use for AHK. And Cmder uses ConEmu, so not big loss to me.
 
 
 REM ***** Personal *****
@@ -110,6 +108,12 @@ REM *
 REM *  These have no automated process available. Each of these should be
 REM *  followed by a @PAUSE.
 REM **************************************************************************
+
+REM ***** Fonts *****
+START chrome.exe "https://input.fontbureau.com/download/""
+@PAUSE
+START chrome.exe "https://github.com/microsoft/cascadia-code/releases"
+@PAUSE
 
 REM ***** Applications *****
 START chrome.exe "https://www.zeta-resource-editor.com/index.html"
@@ -146,7 +150,6 @@ CALL :OpenWindowsStore "9WZDNCRDRK77", "gTasks HD Pro"
 @PAUSE
 CALL :OpenWindowsStore "9NBLGGH5KRJX", "JOIN by joaoapps"
 @PAUSE
-
 
 
 REM **************************************************************************
